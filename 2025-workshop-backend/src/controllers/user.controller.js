@@ -18,6 +18,7 @@ export const getUsers = async (req, res) => {
         const users = getAllUsers();
         // Esto es un atributo personalizado
         span.setAttribute('user.count', users.length);
+        await new Promise(resolve => setTimeout(resolve, 100));
         res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ message: 'Internal server error' });
